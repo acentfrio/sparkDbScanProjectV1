@@ -79,7 +79,7 @@ object TestForHRMap {
 
     val conf = new SparkConf().setAppName("test").setMaster("local")
     val sc = new SparkContext(conf)
-    val data = IOHelper.readDatasetCustom(sc,pathToCsv)
+    val data = IOHelper.readDatasetLatLon(sc,pathToCsv)
 
     calcHist(sc,data,outHist)
     calcNearestNeighbors(sc,data,outNgh)

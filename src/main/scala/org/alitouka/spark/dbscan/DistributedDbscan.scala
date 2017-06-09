@@ -8,7 +8,7 @@ import org.alitouka.spark.dbscan.spatial.rdd.{PointsInAdjacentBoxesRDD, PointsPa
 import scala.Some
 import org.alitouka.spark.dbscan.util.commandLine.CommonArgs
 import org.alitouka.spark.dbscan.util.debug.DebugHelper
-import org.apache.spark.Logging
+
 import scala.collection.immutable.HashMap
 
 /** Implementation of the DBSCAN algorithm which is capable of parallel processing of the input data.
@@ -27,7 +27,7 @@ import scala.collection.immutable.HashMap
 class DistributedDbscan (
   settings: DbscanSettings,
   partitioningSettings: PartitioningSettings = new PartitioningSettings ())
-  extends Dbscan (settings, partitioningSettings) with DistanceCalculation with Logging {
+  extends Dbscan (settings, partitioningSettings) with DistanceCalculation  {
 
   private [dbscan] implicit val distanceMeasure: DistanceMeasure = settings.distanceMeasure
 
@@ -444,7 +444,7 @@ class DistributedDbscan (
 
     val finalMappings = mappings.map ( x => (x, x.head) )
 
-    logInfo (s"Number of points: $numPoints ; iterations: $innerLoopIterations")
+    //logInfo (s"Number of points: $numPoints ; iterations: $innerLoopIterations")
 
     (finalMappings, borderPointsToBeAssignedToClusters)
   }

@@ -71,7 +71,8 @@ object DBScanManager extends  Serializable{
         val centerCoords = new PointCoordinates(Array(sumCords.array(0)/cluster._2.size,sumCords.array(1)/cluster._2.size))
 
         //normalization
-        val normalizedByLog = 1+ log10(averageMeasure)
+        val normalizedByLog=0
+        //val normalizedByLog = 1+ log10(averageMeasure)
         val normalizedByMinMax = scaledMin + (scaledMax-scaledMin)/(max-min)*(averageMeasure-min)
         val normalizedByCustomScale = fitToScale(averageMeasure)
 

@@ -1,8 +1,8 @@
 package isel.ps.g18
 
 
-class DirManager( csv: String) {
-
+class DirManager( csv: String) extends Serializable {
+  def header = "lat,lon,extremLat,extremLon,averageSpeed,normalizedByLog,normalizedByMinMax,customScale,north,south,east,west"
 
   def csvToTest = csv
   def currentDir = System.getProperty("user.dir")
